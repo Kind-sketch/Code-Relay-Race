@@ -1,5 +1,6 @@
 import Header from '../components/Header';
 import { useTeams } from '../context/TeamContext';
+import c3Logo from '../assets/logo.png';
 
 export default function GridPage() {
     const { teams } = useTeams();
@@ -72,7 +73,7 @@ export default function GridPage() {
                             </span>
                         </div>
                     </div>
-                    <img src="/logo.png" alt="C3 Logo" className="stage-header__logo" />
+                    <img src={c3Logo} alt="C3 Logo" className="stage-header__logo" />
                 </div>
 
                 {teams.length === 0 ? (

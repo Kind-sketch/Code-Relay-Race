@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { TeamProvider } from './context/TeamContext';
 import { ThemeProvider } from './context/ThemeContext';
 import LeaderboardPage from './pages/LeaderboardPage';
@@ -9,13 +9,13 @@ function App() {
   return (
     <ThemeProvider>
       <TeamProvider>
-        <BrowserRouter>
+        <HashRouter>
           <Routes>
             <Route path="/" element={<LeaderboardPage />} />
             <Route path="/grid" element={<GridPage />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
       </TeamProvider>
     </ThemeProvider>
   );

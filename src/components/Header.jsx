@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useTheme, THEMES } from '../context/ThemeContext';
+import quantumniqueLogo from '../assets/quantumnique-logo.png';
 
 export default function Header() {
     const { theme, toggleTheme } = useTheme();
@@ -7,7 +8,7 @@ export default function Header() {
     return (
         <header className="header">
             <div className="header__brand">
-                <img src="/quantumnique-logo.png" alt="QuantumNique" className="header__logo" />
+                <img src={quantumniqueLogo} alt="QuantumNique" className="header__logo" />
             </div>
             <h1 className="header__title">Code Relay Race</h1>
             <nav className="header__nav">
