@@ -168,6 +168,19 @@ export function TeamProvider({ children }) {
         });
     }, []);
 
+    // Start all waiting teams (move from Q0 to Q1)
+    const startAllTeams = useCallback(() => {
+        setTeams(prev => prev.map(team => {
+            if (team.currentQuestion !== 0) return team; // Only affect waiting teams
+
+            return {
+                ...team,
+                currentQuestion: 1,
+                lastProgressAt: Date.now()
+            };
+        }));
+    }, []);
+
     // Get ranked teams for leaderboard
     const getRankedTeams = useCallback(() => {
         const teamsCopy = [...teams];
@@ -262,6 +275,7 @@ export function TeamProvider({ children }) {
         removeTeam,
         advanceTeam,
         finishTeam,
+        startAllTeams,
         getRankedTeams,
         getTeamsInOrder,
         getQuestionColor,

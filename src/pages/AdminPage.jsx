@@ -16,6 +16,7 @@ export default function AdminPage() {
         removeTeam,
         advanceTeam,
         finishTeam,
+        startAllTeams,
         getQuestionColor,
         getFinishedCount,
         arePositionsLocked,
@@ -53,6 +54,13 @@ export default function AdminPage() {
             setBulkTeamInput('');
         } else {
             showMessage('No valid teams to add', 'error');
+        }
+    };
+
+    const handleStartAll = () => {
+        if (window.confirm('Are you sure you want to START the race for ALL waiting teams?')) {
+            startAllTeams();
+            showMessage('Race started for all waiting teams!');
         }
     };
 
@@ -179,9 +187,18 @@ export default function AdminPage() {
                     <section className="admin-section">
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
                             <h3 className="admin-section__title" style={{ marginBottom: 0 }}>Manage Teams ({teams.length})</h3>
-                            <button onClick={handleReset} className="btn btn--danger btn--small">
-                                Reset All
-                            </button>
+                            <div style={{ display: 'flex', gap: '1rem' }}>
+                                <button
+                                    onClick={handleStartAll}
+                                    className="btn btn--primary btn--small"
+                                    style={{ backgroundColor: '#10B981' }} // Green color for start
+                                >
+                                    ▶ Start All
+                                </button>
+                                <button onClick={handleReset} className="btn btn--danger btn--small">
+                                    Reset All
+                                </button>
+                            </div>
                         </div>
 
                         {teams.length === 0 ? (
